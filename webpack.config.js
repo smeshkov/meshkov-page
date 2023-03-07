@@ -101,16 +101,16 @@ module.exports = (env) => {
         __PROD__: !isDevelopment && !isStaging,
         __APP_VERSION__: JSON.stringify(pakcageJson.version),
       }),
-      new CopyPlugin({
+      /* new CopyPlugin({
         patterns: [
           { from: './src/assets/*', flatten: true },
-          /* {
+          {
             from: './src/assets/tutorial/**', to({ context, absoluteFilename }) {
               return `${path.relative(context, absoluteFilename.replace('src/assets', 'assets'))}`;
             },
-          }, */
+          },
         ]
-      }),
+      }), */
     ]
   }
 };
