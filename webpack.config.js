@@ -23,7 +23,6 @@ const babelOptions = {
 };
 
 module.exports = (env) => {
-  const { AMPLITUDE_API_KEY } = env;
   return {
     entry: path.join(__dirname, 'src', 'index.js'),
     output: {
@@ -101,16 +100,15 @@ module.exports = (env) => {
         __STG__: isStaging,
         __PROD__: !isDevelopment && !isStaging,
         __APP_VERSION__: JSON.stringify(pakcageJson.version),
-        __AMPLITUDE_API_KEY__: JSON.stringify(AMPLITUDE_API_KEY),
       }),
       new CopyPlugin({
         patterns: [
           { from: './src/assets/*', flatten: true },
-          {
+          /* {
             from: './src/assets/tutorial/**', to({ context, absoluteFilename }) {
               return `${path.relative(context, absoluteFilename.replace('src/assets', 'assets'))}`;
             },
-          },
+          }, */
         ]
       }),
     ]
