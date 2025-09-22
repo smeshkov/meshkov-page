@@ -1,0 +1,35 @@
+.libre-baskerville-regular {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.libre-baskerville-bold {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.libre-baskerville-regular-italic {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+:root {
+  --font-primary: "Libre Baskerville", serif;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  color: #000;
+  font-family: var(--font-primary);
+}
+
+.page-container {
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+}

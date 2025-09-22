@@ -1,3 +1,5 @@
 baseURL = 'https://www.meshkov.page/'
 languageCode = 'en-us'
 title = 'Sergey Meshkov'
+uglyURLs = false
+enableRobotsTXT = true
