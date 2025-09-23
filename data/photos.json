@@ -34,7 +34,11 @@
     {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV01062_drive_by.jpg",
         "title": "Drive by"
-    },    
+    }, 
+    {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV08119_Yulia_Mia.jpg",
+        "title": "Yu & Mi"
+    }, 
     {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV06091_Sydney.jpg",
         "title": "Sydney"
@@ -62,6 +66,10 @@
     {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV05016_horse.jpg",
         "title": "Horse"
+    },
+    {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV05857_sunset_grass.jpg",
+        "title": "Sunset grass"
     },
     {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV01398_taking_photo.jpg",
