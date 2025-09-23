@@ -1,0 +1,33 @@
+{{- $page := .page }}
+{{- $menuID := .menuID }}
+
+{{- with index site.Menus $menuID }}
+  <nav class="nav flex-column main-menu">
+    {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+  </nav>
+{{- end }}
+
+{{- define "_partials/inline/menu/walk.html" }}
+  {{- $page := .page }}
+  {{- range .menuEntries }}
+    {{- $attrs := dict "href" .URL }}
+    {{- if $page.IsMenuCurrent .Menu . }}
+      {{- $attrs = merge $attrs (dict "class" "nav-link active libre-baskerville-bold" "aria-current" "page") }}
+    {{- else }}
+      {{- $attrs = merge $attrs (dict "class" "nav-link" "aria-current" "true") }}
+    {{- end }}
+    {{- $name := .Name }}
+    {{- with .Identifier }}
+      {{- with T . }}
+        {{- $name = . }}
+      {{- end }}
+    {{- end }}
+      <a
+        {{- range $k, $v := $attrs }}
+          {{- with $v }}
+            {{- printf " %s=%q" $k $v | safeHTMLAttr }}
+          {{- end }}
+        {{- end -}}
+      >{{ $name }}</a>    
+  {{- end }}
+{{- end }}

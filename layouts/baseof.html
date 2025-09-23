@@ -21,7 +21,11 @@
       content="{{ .Summary }}"
     />
     {{ else }}
-    <meta name="description" property="og:description" content="Sergey Meshkov" />
+    <meta
+      name="description"
+      property="og:description"
+      content="Sergey Meshkov"
+    />
     {{ end }}
 
     <!-- Meta Previews -->
@@ -30,7 +34,7 @@
       property="og:title"
       content="{{ if .Title }}{{ .Site.Title }} - {{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}"
     />
-    <meta name="type" property="og:type" content="website" />  
+    <meta name="type" property="og:type" content="website" />
     <meta name="url" property="og:url" content="{{ .Page.Permalink }}" />
 
     <!-- Favicon -->
@@ -43,7 +47,7 @@
     <!-- Content Security Policy -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="base-uri 'self'; default-src 'self'; worker-src blob:; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net fonts.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.jsdelivr.net blob:; img-src 'self' storage.googleapis.com data:; media-src 'self' storage.googleapis.com  blob: data:; font-src 'self' cdn.jsdelivr.net fonts.googleapis.com fonts.gstatic.com data:; connect-src 'self' 'unsafe-eval'; frame-src 'self' https://www.youtube.com/"
+      content="base-uri 'self'; default-src 'self'; worker-src blob:; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net fonts.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.jsdelivr.net blob:; img-src 'self' storage.googleapis.com data:; media-src 'self' storage.googleapis.com  blob: data:; font-src 'self' cdn.jsdelivr.net fonts.googleapis.com fonts.gstatic.com data:; connect-src 'self' 'unsafe-eval' https://cdn.jsdelivr.net; frame-src 'self' https://www.youtube.com/"
     />
 
     <!-- Google Font -->
@@ -66,21 +70,37 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
 
-    {{ $themeCss := resources.Get "css/styles.css" | resources.Minify | resources.Fingerprint }}
+    {{ $themeCss := resources.Get "css/styles.css" | resources.Minify |
+    resources.Fingerprint }}
     <link rel="stylesheet" type="text/css" href="{{ $themeCss.Permalink }}" />
-    {{if .Params.extra_css}} {{ $extraCss := resources.Get .Params.extra_css | resources.Minify | resources.Fingerprint }}
+    {{if .Params.extra_css}} {{ $extraCss := resources.Get .Params.extra_css |
+    resources.Minify | resources.Fingerprint }}
     <link rel="stylesheet" type="text/css" href="{{ $extraCss.Permalink }}" />
     {{end}}
   </head>
   <body>
-    <div class="container-fluid">
-      {{ block "header" . }} {{ end }} {{ block "main" . }} {{ end }} {{ block
-      "footer" . }} {{ end }}
-    </div>
+    <header>{{ partial "header.html" . }}</header>
+    <main>
+      <div class="container-fluid">
+        <div class="row main-content">
+          <div class="col col-lg-2">
+            {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+          </div>
+          <div class="col col-lg-10">
+            {{ block "main" . }} 
+              This will be replaced with content from the
+              corresponding "define" action found in the template to which this base
+              template is applied. 
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>{{ partial "footer.html" . }}</footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
-    ></script>
+    ></script>    
   </body>
 </html>

@@ -1,0 +1,29 @@
+.masonry-grid {
+  /* Defines the number of columns */
+  column-count: 3;
+  /* Sets the gap between columns */
+  column-gap: 1em;
+}
+
+.masonry-item {
+  /* Prevents items from breaking across columns */
+  break-inside: avoid;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 1em;
+  overflow: hidden; /* Ensures content stays within rounded corners */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1024px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .masonry-grid {
+    column-count: 1;
+  }
+}

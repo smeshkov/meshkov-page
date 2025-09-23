@@ -28,8 +28,13 @@ body {
   font-family: var(--font-primary);
 }
 
-.page-container {
-  width: 100%;
-  max-width: 800px;
-  height: 100%;
+.main-content {
+  margin-top: 2rem;
+
+  .main-menu {
+    .nav-link {
+      text-decoration: none;
+      color: #000;
+    }
+  }
 }

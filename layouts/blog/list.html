@@ -1,0 +1,18 @@
+{{ define "main" }}
+<div class="row">
+  <div class="col-lg-4 mx-auto">
+    {{ range .Pages }} {{ $pageTitle := htmlUnescape .LinkTitle | safeHTML }}
+    <div class="card">
+      <img
+        class="rounded img-fluid"
+        src="{{ .Params.header_image }}"
+        alt="{{ $pageTitle }}"
+      />
+      <a href="{{ . }}" class="text-reset text-decoration-none stretched-link">
+        <h5 class="blog-post-title">{{ $pageTitle }}</h5>
+      </a>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

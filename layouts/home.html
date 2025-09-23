@@ -1,0 +1,90 @@
+{{ define "main" }}
+<div class="masonry-grid" id="masonry-grid">
+  {{/* Define how many photos to show on the initial load */}}
+  {{ $photosPerPage := 9 }}
+
+  {{ $allPhotos := .Site.Data.photos }}
+
+  {{ range first $photosPerPage $allPhotos }}
+  <div class="masonry-item">
+    <img
+      src="{{ .src }}"
+      class="img-fluid"
+      crossorigin="anonymous"
+      alt="{{ .title }}"
+      loading="lazy"
+    />
+  </div>
+  {{ end }}
+</div>
+
+{{ if gt (len $allPhotos) $photosPerPage }}
+  <div id="loader"></div>
+{{ end }}
+
+{{ .Content }}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.getElementById('masonry-grid');
+  const loader = document.getElementById('loader');
+
+  // Exit if there's no loader element on the page
+  if (!loader) {
+    return;
+  }
+  
+  const photosPerPage = {{ $photosPerPage }}; // The number of photos to load per scroll
+  let currentIndex = photosPerPage; // Start from the index of the next photo to load
+  let allPhotos = {{ .Site.Data.photos }}; // This will store all photos after the initial fetch
+  let isLoading = false; // Prevents multiple loads at the same time
+
+  // --- Functions ---
+
+  // Renders a batch of photo elements to the grid
+  const renderPhotos = (photos) => {
+    photos.forEach(photo => {
+      const item = document.createElement('div');
+      item.classList.add('masonry-item');
+      item.innerHTML = `
+        <img src="${photo.src}" alt="${photo.title}" class="img-fluid" crossorigin="anonymous" loading="lazy" />
+      `;
+      grid.appendChild(item);
+    });
+  };
+
+  // Loads the next batch of photos from the locally stored array
+  const loadMorePhotos = () => {
+    if (isLoading) return;
+    isLoading = true;
+
+    // Slice the next batch from the main array
+    const nextBatch = allPhotos.slice(currentIndex, currentIndex + photosPerPage);
+
+    if (nextBatch.length > 0) {
+      renderPhotos(nextBatch);
+      // Update the index for the next load
+      currentIndex += nextBatch.length;
+    }
+
+    // If we've reached the end of the photos, hide the loader and stop observing
+    if (currentIndex >= allPhotos.length) {
+      loader.style.display = 'none';
+      observer.unobserve(loader);
+    }
+    
+    isLoading = false;
+  };
+
+  // --- Intersection Observer Setup ---
+
+  const observer = new IntersectionObserver((entries) => {
+    // If the loader is visible in the viewport, load more photos
+    if (entries[0].isIntersecting) {
+      loadMorePhotos();
+    }
+  }, {
+    threshold: 1.0 // Trigger when the loader is fully visible
+  });
+});
+</script>
+{{ end }}
