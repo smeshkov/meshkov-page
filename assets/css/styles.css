@@ -28,6 +28,10 @@ body {
   font-family: var(--font-primary);
 }
 
+.page-header {
+  padding: 8px 16px;
+}
+
 .main-content {
   margin-top: 2rem;
   .page-header {
@@ -36,7 +40,7 @@ body {
   .main-logo {
     margin-left: 16px;
     margin-bottom: 1rem;
-    width: 140px;    
+    width: 140px;
   }
   .main-menu {
     .nav-link {
@@ -59,6 +63,23 @@ body {
       }
       .bi-instagram {
         scale: 1.4;
+      }
+    }
+  }
+}
+
+/*==================*/
+/* Mobile
+/*==================*/
+
+@media only screen and (max-width: 700px) {
+  .main-content {
+    .main-logo {
+      width: 80px;
+    }
+    .main-menu {
+      .nav-link {
+        font-size: 16px;
       }
     }
   }

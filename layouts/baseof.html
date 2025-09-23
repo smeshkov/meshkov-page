@@ -79,11 +79,11 @@
     {{end}}
   </head>
   <body>
-    <header>{{ partial "header.html" . }}</header>
+    <header class="d-block d-lg-none">{{ partial "header.html" . }}</header>
     <main>
       <div class="container-fluid">
         <div class="row main-content">
-          <div class="col col-lg-2">
+          <div class="col col-lg-2 d-none d-lg-block">
             <div class="main-logo">
               <a href="{{ .Site.BaseURL }}">
                 <img
