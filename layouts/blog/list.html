@@ -1,16 +1,22 @@
 {{ define "main" }}
 <div class="row">
-  <div class="col-lg-4 mx-auto">
-    {{ range .Pages }} {{ $pageTitle := htmlUnescape .LinkTitle | safeHTML }}
-    <div class="card">
-      <img
-        class="rounded img-fluid"
-        src="{{ .Params.header_image }}"
-        alt="{{ $pageTitle }}"
-      />
-      <a href="{{ . }}" class="text-reset text-decoration-none stretched-link">
-        <h5 class="blog-post-title">{{ $pageTitle }}</h5>
-      </a>
+  <div class="col">
+    {{ range .Pages }} 
+    {{ $pageTitle := htmlUnescape .LinkTitle | safeHTML }}
+    <div class="blog-item">
+        <div>
+            <img
+              class="img-fluid"
+              src="{{ .Params.header_image }}"
+              alt="{{ $pageTitle }}"
+            />
+        </div>
+        <div>
+            <a href="{{ .Permalink }}" class="text-reset text-decoration-none stretched-link">
+              <h3 class="blog-post-title">{{ $pageTitle }}</h5>
+            </a>
+            <p class="blog-summary">{{ .Params.summary }}</p>
+        </div>
     </div>
     {{ end }}
   </div>

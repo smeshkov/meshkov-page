@@ -1,0 +1,12 @@
+.blog-item {
+  max-width: 1200px;
+  display: flex;
+  justify-content: start;
+  gap: 20px;
+  img {
+    max-height: 240px;
+  }
+  .blog-summary {
+    text-align: justify;
+  }
+}
