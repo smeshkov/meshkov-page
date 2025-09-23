@@ -14,7 +14,7 @@
     {{- if $page.IsMenuCurrent .Menu . }}
       {{- $attrs = merge $attrs (dict "class" "nav-link active libre-baskerville-bold" "aria-current" "page") }}
     {{- else }}
-      {{- $attrs = merge $attrs (dict "class" "nav-link" "aria-current" "true") }}
+      {{- $attrs = merge $attrs (dict "class" "nav-link" "aria-current" "page") }}
     {{- end }}
     {{- $name := .Name }}
     {{- with .Identifier }}
@@ -22,12 +22,12 @@
         {{- $name = . }}
       {{- end }}
     {{- end }}
-      <a
-        {{- range $k, $v := $attrs }}
-          {{- with $v }}
-            {{- printf " %s=%q" $k $v | safeHTMLAttr }}
-          {{- end }}
-        {{- end -}}
-      >{{ $name }}</a>    
+    <a
+    {{- range $k, $v := $attrs }}
+        {{- with $v }}
+        {{- printf " %s=%q" $k $v | safeHTMLAttr }}
+        {{- end }}
+    {{- end -}}
+    >{{ $name }}</a>    
   {{- end }}
 {{- end }}
