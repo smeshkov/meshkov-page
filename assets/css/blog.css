@@ -5,8 +5,14 @@
   justify-content: start;
   border: none;
   gap: 20px;
-  img {
-    max-height: 240px;
+  .blog-img {
+    max-height: 180px;
+    img {
+      max-height: 180px;
+    }
+  }
+  .blog-date {
+    color: #666;
   }
   .blog-summary {
     text-align: justify;
@@ -38,7 +44,7 @@
 
 @media only screen and (max-width: 700px) {
   .blog-item {
-    img {
+    .blog-img {
       max-height: 80px;
     }
   }
