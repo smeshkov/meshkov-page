@@ -85,11 +85,13 @@
         <div class="row main-content">
           <div class="col col-lg-2">
             <div class="main-logo">
-              <img
-                src="https://storage.googleapis.com/zoomio-public/meshkov-page/logo/me_camera.png"
-                class="img-fluid"
-                crossorigin="anonymous"
-              />
+              <a href="{{ .Site.BaseURL }}">
+                <img
+                  src="https://storage.googleapis.com/zoomio-public/meshkov-page/logo/me_camera.png"
+                  class="img-fluid"
+                  crossorigin="anonymous"
+                />
+              </a>
             </div>
             {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
             <div class="main-socials">

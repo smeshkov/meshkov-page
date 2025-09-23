@@ -1,7 +1,9 @@
 .blog-item {
   max-width: 1200px;
   display: flex;
+  flex-direction: row;
   justify-content: start;
+  border: none;
   gap: 20px;
   img {
     max-height: 240px;

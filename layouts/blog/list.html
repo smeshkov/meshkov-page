@@ -3,17 +3,17 @@
   <div class="col">
     {{ range .Pages }} 
     {{ $pageTitle := htmlUnescape .LinkTitle | safeHTML }}
-    <div class="blog-item">
+    <div class="card blog-item">
         <div>
             <img
-              class="img-fluid"
-              src="{{ .Params.header_image }}"
-              alt="{{ $pageTitle }}"
+                class="img-fluid"
+                src="{{ .Params.header_image }}"
+                alt="{{ $pageTitle }}"
             />
         </div>
         <div>
             <a href="{{ .Permalink }}" class="text-reset text-decoration-none stretched-link">
-              <h3 class="blog-post-title">{{ $pageTitle }}</h5>
+                <h3 class="blog-post-title">{{ $pageTitle }}</h5>
             </a>
             <p class="blog-summary">{{ .Params.summary }}</p>
         </div>
