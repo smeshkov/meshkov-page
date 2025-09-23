@@ -13,6 +13,25 @@
   }
 }
 
+.flex-container {
+  display: flex;
+  gap: 1rem; /* Optional: adds space between the images */
+
+  /* align-items: stretch; is the default, which makes the wrappers the same height */
+}
+
+.image-wrapper {
+  flex: 1; /* This makes each wrapper take up an equal amount of width */
+}
+
+.image-wrapper img {
+  /* This is the crucial part */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Prevents distortion by cropping the image to fit */
+  display: block; /* Removes any extra space below the image */
+}
+
 /*==================*/
 /* Mobile
 /*==================*/
