@@ -4,12 +4,12 @@
         "title": "Cradle Mountain"
     },
     {
-        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV01965_cup.jpg",
-        "title": "Cup"
-    },
-    {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV06068_sunset_boat.jpg",
         "title": "Sunset boat"
+    },
+    {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV01965_cup.jpg",
+        "title": "Cup"
     },
     {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV05431_jetty.jpg",
@@ -54,11 +54,15 @@
     {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV05527_sunrise_first.jpg",
         "title": "Sunrise"
+    },    
+    {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV02336_markets_girl.jpg",
+        "title": "Japanese Art"
     },
     {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV01447_splash.jpg",
         "title": "Splash"
-    },    
+    },
     {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV06228_Cliff.jpg",
         "title": "Cliff"
