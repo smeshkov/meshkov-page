@@ -1,5 +1,9 @@
 [
     {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/DSCF0798_Miha_jump.jpg",
+        "title": "Miha jump"
+    },
+    {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/11040125_Yulia_Cradle.jpg",
         "title": "Cradle Mountain"
     },
@@ -82,5 +86,21 @@
     {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV01398_taking_photo.jpg",
         "title": "Taking a photo"
+    },
+    {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV02783_surf_couple.jpg",
+        "title": "Surf couple"
+    },    
+    {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV02570_birds.jpg",
+        "title": "Birds"
+    },
+    {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV03687_couple.jpg",
+        "title": "Couple"
+    },    
+    {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV03959_girl.jpg",
+        "title": "Girl"
     }    
 ]
