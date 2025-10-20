@@ -50,6 +50,10 @@
     {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV06091_Sydney.jpg",
         "title": "Sydney"
+    },    
+    {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV05015_papa.jpg",
+        "title": "Papa"
     },
     {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV01217_opera_stairs.jpg",
@@ -102,5 +106,9 @@
     {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV03959_girl.jpg",
         "title": "Girl"
+    },
+    {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/DSCF1115_crossing.jpg",
+        "title": "Crossing"
     }    
 ]
