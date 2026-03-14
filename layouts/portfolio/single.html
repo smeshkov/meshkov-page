@@ -1,0 +1,20 @@
+{{ define "main" }}
+{{ $cat := .Params.category }}
+{{ $photos := index .Site.Data.photos $cat }}
+
+<div class="horizontal-gallery-container">
+  <div class="horizontal-gallery" id="horizontal-gallery">
+    {{ range $photos }}
+    <div class="gallery-item">
+      <img
+        src="{{ .src }}"
+        alt="{{ .title }}"
+        class="img-fluid"
+        crossorigin="anonymous"
+        loading="lazy"
+      />
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

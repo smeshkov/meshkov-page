@@ -10,5 +10,5 @@ Here are a few websites for the inspiration:
 
 Before uploading the photos from the `/Volumes/Crucial\ X10/MeshkovPage/2026-03-15_new/` directory to the Storage Bucket, resize them to 1024 pixels on the longer side. Also given that there are photos on the website, plus the new ones from the `/Volumes/Crucial\ X10/MeshkovPage/2026-03-15_new/` directory, make sure to:
 
-1. Avoid duplicates
+1. Make sure there is no same images repeated twice
 2. I want you to break them all down into the categories, so that each category has its own page

@@ -1,29 +1,68 @@
-.masonry-grid {
-  /* Defines the number of columns */
-  column-count: 4;
-  /* Sets the gap between columns */
-  column-gap: 0;
+/* Clean Horizontal Gallery Style */
+.horizontal-gallery-container {
+  width: 100%;
+  height: calc(100vh - 120px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  /* Hide scrollbar for a cleaner look */
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
 }
 
-.masonry-item {
-  /* Prevents items from breaking across columns */
-  break-inside: avoid;
+.horizontal-gallery-container::-webkit-scrollbar {
+  display: none;
+}
+
+.horizontal-gallery {
+  display: flex;
+  flex-direction: row;
+  height: 85%;
+  gap: 60px;
+  padding: 0 40px;
+  align-items: center;
+}
+
+.gallery-item {
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.gallery-item img {
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  /* subtle elegant shadow */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); 
   background-color: #f9f9f9;
-  /* border-radius: 8px; */
-  margin-bottom: 0;
-  overflow: hidden; /* Ensures content stays within rounded corners */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Responsive adjustments for smaller screens */
+/* Mobile responsive adjustments */
 @media (max-width: 1024px) {
-  .masonry-grid {
-    column-count: 2;
+  .horizontal-gallery-container {
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: block;
+    margin-top: 20px;
   }
-}
-
-@media (max-width: 768px) {
-  .masonry-grid {
-    column-count: 2;
+  .horizontal-gallery {
+    flex-direction: column;
+    height: auto;
+    gap: 30px;
+    padding: 0 16px;
+  }
+  .gallery-item {
+    width: 100%;
+    height: auto;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   }
 }
