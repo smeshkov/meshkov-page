@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn = document.getElementById('cat-prev-slide');
   const nextBtn = document.getElementById('cat-next-slide');
   let currentSlide = 0;
+  let slideInterval;
 
   if (slides.length === 0) return;
 
@@ -43,13 +44,41 @@ document.addEventListener('DOMContentLoaded', () => {
     slides[currentSlide].classList.add('active');
   }
 
-  prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
-  nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+  function nextSlide() {
+    showSlide(currentSlide + 1);
+  }
+
+  function startSlideShow() {
+    slideInterval = setInterval(nextSlide, 4000);
+  }
+
+  function resetSlideShow() {
+    clearInterval(slideInterval);
+    startSlideShow();
+  }
+
+  prevBtn.addEventListener('click', () => {
+    showSlide(currentSlide - 1);
+    resetSlideShow();
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    showSlide(currentSlide + 1);
+    resetSlideShow();
+  });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
-    if (e.key === 'ArrowRight') showSlide(currentSlide + 1);
+    if (e.key === 'ArrowLeft') {
+      showSlide(currentSlide - 1);
+      resetSlideShow();
+    }
+    if (e.key === 'ArrowRight') {
+      showSlide(currentSlide + 1);
+      resetSlideShow();
+    }
   });
+
+  startSlideShow();
 });
 </script>
 {{ end }}

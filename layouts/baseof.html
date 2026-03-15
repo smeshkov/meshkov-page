@@ -65,7 +65,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
 
@@ -96,12 +96,8 @@
         <div class="row main-content">
           <div class="col col-lg-2 d-none d-lg-block">
             <div class="main-logo">
-              <a href="{{ .Site.BaseURL }}">
-                <img
-                  src="https://storage.googleapis.com/zoomio-public/meshkov-page/logo/me_camera.png"
-                  class="img-fluid"
-                  crossorigin="anonymous"
-                />
+              <a href="{{ .Site.BaseURL }}" class="brand-text">
+                Sergey Meshkov
               </a>
             </div>
             {{ partial "menu.html" (dict "menuID" "main" "page" .) }}

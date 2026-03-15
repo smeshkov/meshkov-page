@@ -36,13 +36,19 @@ body {
   .main-logo {
     margin-left: 16px;
     margin-bottom: 2rem;
-    width: 140px;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
-    filter: invert(1);
   }
-  .main-logo:hover {
-    opacity: 1;
+  .brand-text {
+    font-family: "Caveat", cursive;
+    font-size: 3rem;
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    transition: color 0.3s ease;
+    white-space: nowrap;
+  }
+  .brand-text:hover {
+    color: var(--link-color);
   }
   .main-menu {
     .nav-link {
