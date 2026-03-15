@@ -74,4 +74,7 @@
     width: 36px;
     height: 36px;
   }
+  .slide img {
+    object-fit: contain;
+  }
 }
