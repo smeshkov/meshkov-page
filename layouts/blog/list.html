@@ -1,27 +1,29 @@
 {{ define "main" }}
-<div class="row">
-  <div class="col">
-    {{ range .Pages }} 
-    {{ $pageTitle := htmlUnescape .LinkTitle | safeHTML }}
-    <div class="card blog-item">
-        <div>
-            <div class="blog-img">
-                <img
-                    class="img-fluid"
-                    src="{{ .Params.header_image }}"
-                    alt="{{ $pageTitle }}"
-                />
-            </div>
-        </div>
-        <div>
-            <a href="{{ .Permalink }}" class="text-reset text-decoration-none stretched-link">
-                <h3 class="blog-post-title">{{ $pageTitle }}</h5>
-            </a>
-            <p class="blog-date">{{ .Date.Format "Jan 2, 2006" | upper }}</p>
-            <p class="blog-summary">{{ .Params.summary }}</p>
-        </div>
+<div class="container blog-container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-10 col-lg-8">
+      {{ range .Pages }} 
+      {{ $pageTitle := htmlUnescape .LinkTitle | safeHTML }}
+      <div class="card blog-item mx-auto">
+          <div>
+              <div class="blog-img">
+                  <img
+                      class="img-fluid"
+                      src="{{ .Params.header_image }}"
+                      alt="{{ $pageTitle }}"
+                  />
+              </div>
+          </div>
+          <div>
+              <a href="{{ .Permalink }}" class="text-reset text-decoration-none stretched-link">
+                  <h3 class="blog-post-title">{{ $pageTitle }}</h3>
+              </a>
+              <p class="blog-date">{{ .Date.Format "Jan 2, 2006" | upper }}</p>
+              <p class="blog-summary">{{ .Params.summary }}</p>
+          </div>
+      </div>
+      {{ end }}
     </div>
-    {{ end }}
   </div>
 </div>
 {{ end }}

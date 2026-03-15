@@ -1,86 +1,50 @@
-.libre-baskerville-regular {
-  font-family: "Libre Baskerville", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.libre-baskerville-bold {
-  font-family: "Libre Baskerville", serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.libre-baskerville-regular-italic {
-  font-family: "Libre Baskerville", serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
 :root {
-  --font-primary: "Libre Baskerville", serif;
+  --font-primary: "Inter", sans-serif;
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --link-color: #cccccc;
+  --link-hover: #ffffff;
 }
 
 html,
 body {
   height: 100%;
   width: 100%;
-  color: #000;
+  color: var(--text-color);
+  background-color: var(--bg-color);
   font-family: var(--font-primary);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 .page-header {
   padding: 8px 16px;
+  font-weight: 300;
+  letter-spacing: -0.5px;
 }
 
-.main-content {
-  margin-top: 2rem;
-  .page-header {
-    margin-bottom: 2rem;
-  }
-  .main-logo {
-    margin-left: 16px;
-    margin-bottom: 1rem;
-    width: 140px;
-  }
-  .main-menu {
-    .nav-link {
-      text-decoration: none;
-      color: #000;
-      font-size: 22px;
-    }
-  }
-  .main-socials {
-    margin-top: 1rem;
-    padding-left: 24px;
-    display: flex;
-    justify-content: start;
-    gap: 30px;
-    a {
-      text-decoration: none;
-      color: #000;
-      svg {
-        scale: 1.8;
-      }
-      .bi-instagram {
-        scale: 1.4;
-      }
-    }
-  }
+.brand-text {
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  font-size: 2rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+.brand-text:hover {
+  color: var(--link-color);
 }
 
-/*==================*/
-/* Mobile
-/*==================*/
-
-@media only screen and (max-width: 700px) {
-  .main-content {
-    .main-logo {
-      width: 80px;
-    }
-    .main-menu {
-      .nav-link {
-        font-size: 16px;
-      }
-    }
-  }
+/* Nav Link Hover states for top menu */
+.navbar-nav .nav-link {
+  transition: color 0.3s ease;
+}
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+  color: var(--link-hover) !important;
 }
