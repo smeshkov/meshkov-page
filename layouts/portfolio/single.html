@@ -1,14 +1,10 @@
 {{ define "main" }}
-{{ .Content }}
+{{ $cat := .Params.category }}
+{{ $photos := index .Site.Data.photos $cat }}
 
-<div class="fullscreen-slider" id="home-slider" aria-roledescription="carousel" aria-label="Photography Portfolio">
-  {{ $allPhotos := slice }}
-  {{ range $category, $photos := .Site.Data.photos }}
-    {{ $allPhotos = $allPhotos | append $photos }}
-  {{ end }}
-
-  {{ range $index, $photo := $allPhotos }}
-    <div class="slide {{ if eq $index 0 }}active{{ end }}" role="group" aria-roledescription="slide" aria-label="{{ add $index 1 }} of {{ len $allPhotos }}">
+<div class="fullscreen-slider" id="category-slider" aria-roledescription="carousel" aria-label="{{ .Title }} Portfolio">
+  {{ range $index, $photo := $photos }}
+    <div class="slide {{ if eq $index 0 }}active{{ end }}" role="group" aria-roledescription="slide" aria-label="{{ add $index 1 }} of {{ len $photos }}">
       <img
         src="{{ .src }}"
         alt="{{ .title }}"
@@ -19,12 +15,12 @@
   {{ end }}
 
   <div class="slider-controls">
-    <button class="slider-btn" id="prev-slide" aria-label="Previous Slide">
+    <button class="slider-btn" id="cat-prev-slide" aria-label="Previous Slide">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
       </svg>
     </button>
-    <button class="slider-btn" id="next-slide" aria-label="Next Slide">
+    <button class="slider-btn" id="cat-next-slide" aria-label="Next Slide">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
       </svg>
@@ -34,9 +30,9 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const slides = document.querySelectorAll('#home-slider .slide');
-  const prevBtn = document.getElementById('prev-slide');
-  const nextBtn = document.getElementById('next-slide');
+  const slides = document.querySelectorAll('#category-slider .slide');
+  const prevBtn = document.getElementById('cat-prev-slide');
+  const nextBtn = document.getElementById('cat-next-slide');
   let currentSlide = 0;
 
   if (slides.length === 0) return;
