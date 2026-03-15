@@ -9,6 +9,7 @@
         src="{{ .src }}"
         alt="{{ .title }}"
         crossorigin="anonymous"
+        style="object-fit: contain;"
         {{ if eq $index 0 }}fetchpriority="high"{{ else }}loading="lazy"{{ end }}
       />
     </div>
