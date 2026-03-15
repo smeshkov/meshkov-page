@@ -26,82 +26,24 @@ body {
   letter-spacing: -0.5px;
 }
 
-.main-content {
-  position: absolute;
-  z-index: 10;
-  margin-top: 2rem;
-  .page-header {
-    margin-bottom: 2rem;
-  }
-  .main-logo {
-    margin-left: 16px;
-    margin-bottom: 2rem;
-  }
-  .brand-text {
-    font-family: "Caveat", cursive;
-    font-size: 3rem;
-    font-weight: 500;
-    color: var(--text-color);
-    text-decoration: none;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-    transition: color 0.3s ease;
-    white-space: nowrap;
-  }
-  .brand-text:hover {
-    color: var(--link-color);
-  }
-  .main-menu {
-    .nav-link {
-      text-decoration: none;
-      color: var(--link-color);
-      font-size: 14px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-      transition: color 0.3s ease;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
-    }
-    .nav-link:hover, .nav-link.active {
-      color: var(--link-hover);
-    }
-  }
-  .main-socials {
-    margin-top: 1rem;
-    padding-left: 24px;
-    display: flex;
-    justify-content: start;
-    gap: 30px;
-    a {
-      text-decoration: none;
-      color: var(--link-color);
-      transition: color 0.3s ease;
-      svg {
-        scale: 1.8;
-      }
-      .bi-instagram {
-        scale: 1.4;
-      }
-    }
-    a:hover {
-      color: var(--link-hover);
-    }
-  }
+.brand-text {
+  font-family: "Caveat", cursive;
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--text-color);
+  text-decoration: none;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+.brand-text:hover {
+  color: var(--link-color);
 }
 
-/*==================*/
-/* Mobile
-/*==================*/
-
-@media only screen and (max-width: 700px) {
-  .main-content {
-    .main-logo {
-      width: 80px;
-    }
-    .main-menu {
-      .nav-link {
-        font-size: 14px;
-      }
-    }
-  }
+/* Nav Link Hover states for top menu */
+.navbar-nav .nav-link {
+  transition: color 0.3s ease;
+}
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+  color: var(--link-hover) !important;
 }
