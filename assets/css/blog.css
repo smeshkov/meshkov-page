@@ -1,11 +1,27 @@
+.blog-container {
+  padding-top: 140px;
+  padding-bottom: 100px;
+}
+
+.blog-content {
+  text-align: left; /* Keep left alignment for readability but it's constrained in center column */
+}
+
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+}
+
 .blog-item {
   max-width: 1200px;
   display: flex;
   flex-direction: row;
   justify-content: start;
   border: none;
+  background: transparent;
+  color: var(--text-color);
   gap: 20px;
-  margin-top: 1rem;
+  margin-top: 2rem;
   .blog-img {
     max-width: 180px;
     img {
