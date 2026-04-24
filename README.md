@@ -1,6 +1,6 @@
 # Meshkov Page
 
-My personal website
+My personal website.
 
 ## Useful commands
 
