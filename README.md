@@ -2,6 +2,11 @@
 
 My personal website.
 
+## Tech stack
+
+- [Go](https://go.dev/)
+- [Hugo](https://gohugo.io/)
+
 ## Useful commands
 
 - start local server `hugo server -D`

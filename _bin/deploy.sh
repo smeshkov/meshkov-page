@@ -12,6 +12,7 @@ if [ -z "$PROJECT" ]; then
 fi
 
 rm -rf public
-hugo -D
+# for drafts use: hugo -D
+hugo
 gcloud config set project $PROJECT
 gsutil -m rsync -R public "gs://$BUCKET"
