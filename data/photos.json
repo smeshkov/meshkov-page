@@ -130,6 +130,10 @@
     ],
     "people": [
       {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV06067_sunset_boat.jpg",
+        "title": "Sunset Boat"
+      },
+      {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV05309_fam.jpg",
         "title": "Family"
       },
@@ -192,13 +196,25 @@
       {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV08354_beach_boys_after.jpg",
         "title": "Beach Boys"
+      },
+      {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV09059_qc_pool.jpg",
+        "title": "Pool"
+      },
+      {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV09177_birds_sea.jpg",
+        "title": "Birds Sea"
+      },
+      {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV09275_manly_warf.jpg",
+        "title": "Manly Wharf"
+      },
+      {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV09356_heli.jpg",
+        "title": "Heli"
       }
     ],
-    "nature": [
-      {
-        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV06067_sunset_boat.jpg",
-        "title": "Sunset Boat"
-      },
+    "nature": [      
       {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/10440122_stack_Wineglass_Bay.jpg",
         "title": "Wineglass Bay"
@@ -308,20 +324,8 @@
         "title": "Beach After"
       },
       {
-        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV09059_qc_pool.jpg",
-        "title": "Pool"
-      },
-      {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV09177_birds_sea.jpg",
         "title": "Birds Sea"
-      },
-      {
-        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV09275_manly_warf.jpg",
-        "title": "Manly Wharf"
-      },
-      {
-        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV09356_heli.jpg",
-        "title": "Heli"
       }
     ],
     "architecture": [
