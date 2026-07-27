@@ -19,7 +19,7 @@
     {{- $photos := index site.Data.photos.series .Params.category }}
     {{- $cover := .Params.cover | default (index $photos 0).src }}
     <a class="series-card" href="{{ .RelPermalink }}">
-      <img src="{{ $cover }}" alt="{{ .Title }}" loading="lazy" decoding="async" />
+      <img src="{{ partial "photo.html" $cover }}" alt="{{ .Title }}" loading="lazy" decoding="async" />
       <div class="series-card__row">
         <span class="series-card__name">{{ .Title }}</span>
         <span class="series-card__count">{{ len $photos }}</span>

@@ -26,7 +26,7 @@
   <div class="print-grid">
     {{- range $prints }}
     <a class="print-card" href="{{ printf "/prints/%s/" .slug | relURL }}">
-      <img src="{{ .src }}" alt="{{ .title }}" loading="lazy" decoding="async" />
+      <img src="{{ partial "photo.html" .src }}" alt="{{ .title }}" loading="lazy" decoding="async" />
       <span class="print-card__name">{{ .title }}</span>
       <span class="print-card__price">
         {{- with .from }}From {{ . }}{{ end }}

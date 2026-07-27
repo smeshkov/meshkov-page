@@ -1,0 +1,12 @@
+{{ define "main" }}
+<article class="post">
+  <div class="post__body">
+    {{- with .Params.eyebrow }}<span class="post__meta">{{ . }}</span>{{ end }}
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+    {{- if not .Lastmod.IsZero }}
+    <p class="post__meta">Last updated {{ .Lastmod.Format "2 January 2006" }}</p>
+    {{- end }}
+  </div>
+</article>
+{{ end }}

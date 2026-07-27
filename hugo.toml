@@ -10,6 +10,12 @@ enableRobotsTXT = true
   # Set this to a form handler URL to turn the letter blocks into a real
   # signup form. Left empty, they point at the RSS feed instead.
   newsletterAction = ''
+  # Where the photographs actually live.
+  photoOrigin = 'https://storage.googleapis.com/zoomio-public/meshkov-page'
+  # Set to '/photos' once the nginx image proxy is deployed, so images are
+  # served from meshkov.page and the robots.txt / X-Robots-Tag rules cover
+  # them. Empty keeps the direct bucket URLs.
+  photoBase = ''
 
 [taxonomies]
   tag = 'tags'

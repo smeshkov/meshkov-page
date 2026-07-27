@@ -26,7 +26,7 @@
 
     <aside class="about__side">
       {{- with .Params.portrait }}
-      <img class="about__portrait" src="{{ . }}" alt="Portrait of Sergey Meshkov" loading="lazy" decoding="async" />
+      <img class="about__portrait" src="{{ partial "photo.html" . }}" alt="Portrait of Sergey Meshkov" loading="lazy" decoding="async" />
       {{- end }}
       {{- with .Params.portrait_caption }}
       <span class="about__caption">{{ . }}</span>

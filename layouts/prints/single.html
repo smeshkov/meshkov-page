@@ -5,7 +5,7 @@
 
 <div class="print-detail">
   <div class="print-detail__stage">
-    <img src="{{ $print.src }}" alt="{{ $print.title }}" fetchpriority="high" decoding="async" />
+    <img src="{{ partial "photo.html" $print.src }}" alt="{{ $print.title }}" fetchpriority="high" decoding="async" />
   </div>
 
   <div class="print-detail__panel">

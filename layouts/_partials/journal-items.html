@@ -3,7 +3,7 @@
   {{- range . }}
   <a class="post-item" href="{{ .RelPermalink }}">
     {{- with .Params.header_image }}
-    <img src="{{ . }}" alt="" loading="lazy" decoding="async" />
+    <img src="{{ partial "photo.html" . }}" alt="" loading="lazy" decoding="async" />
     {{- end }}
     <div class="post-item__text">
       <span class="post-item__meta">

@@ -1,0 +1,13 @@
+{{- /*
+  Resolves a photograph URL. Takes the absolute bucket URL stored in
+  data/photos.json and rewrites it onto `photoBase` when that is configured,
+  so the images are served through meshkov.page instead of straight from
+  storage.googleapis.com. Leave photoBase empty to keep the direct bucket URLs.
+*/ -}}
+{{- $src := . -}}
+{{- $origin := site.Params.photoOrigin -}}
+{{- $base := site.Params.photoBase -}}
+{{- if and $origin $base (hasPrefix $src $origin) -}}
+  {{- $src = printf "%s%s" $base (strings.TrimPrefix $origin $src) -}}
+{{- end -}}
+{{- $src -}}

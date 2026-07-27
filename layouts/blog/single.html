@@ -2,7 +2,7 @@
 <article class="post">
   {{- with .Params.header_image }}
   <div class="post__hero">
-    <img src="{{ . }}" alt="" fetchpriority="high" decoding="async" />
+    <img src="{{ partial "photo.html" . }}" alt="" fetchpriority="high" decoding="async" />
   </div>
   {{- end }}
 

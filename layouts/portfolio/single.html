@@ -21,9 +21,9 @@
 
   <div class="mosaic">
     {{- range $i, $photo := $photos }}
-    <a href="{{ $photo.src }}" target="_blank" rel="noopener">
+    <a href="{{ partial "photo.html" $photo.src }}" target="_blank" rel="noopener">
       <img
-        src="{{ $photo.src }}"
+        src="{{ partial "photo.html" $photo.src }}"
         alt="{{ $photo.title }}"
         decoding="async"
         {{ if ge $i 4 }}loading="lazy"{{ end }}
@@ -35,7 +35,7 @@
   <div class="fullview">
     {{- range $i, $photo := $photos }}
     <figure>
-      <img src="{{ $photo.src }}" alt="{{ $photo.title }}" loading="lazy" decoding="async" />
+      <img src="{{ partial "photo.html" $photo.src }}" alt="{{ $photo.title }}" loading="lazy" decoding="async" />
       <figcaption>{{ printf "%02d" (add $i 1) }} &middot; {{ $photo.title }}</figcaption>
     </figure>
     {{- end }}

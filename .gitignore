@@ -1,5 +1,7 @@
 # Generated files by hugo
 /public/
+/photo_data
+/photo_data_web
 /resources/_gen/
 /assets/jsconfig.json
 hugo_stats.json

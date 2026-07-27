@@ -403,6 +403,16 @@ button {
   color: var(--dim);
 }
 
+.rail__legal {
+  font: 300 11px/1.6 var(--sans);
+  color: var(--dim);
+}
+
+.rail__legal a {
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+
 /* Mobile top bar — replaced by the rail on desktop */
 .topbar {
   display: none;
