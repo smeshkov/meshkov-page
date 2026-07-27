@@ -1,0 +1,20 @@
+{{- /* Journal entries. Takes a Pages collection. */ -}}
+<div class="journal__list">
+  {{- range . }}
+  <a class="post-item" href="{{ .RelPermalink }}">
+    {{- with .Params.header_image }}
+    <img src="{{ . }}" alt="" loading="lazy" decoding="async" />
+    {{- end }}
+    <div class="post-item__text">
+      <span class="post-item__meta">
+        {{- with (index .Params.tags 0) }}{{ . }} &middot; {{ end -}}
+        {{ .Date.Format "2 Jan 2006" }} &middot; {{ .ReadingTime }} min
+      </span>
+      <span class="post-item__title">{{ .LinkTitle }}</span>
+      {{- with .Params.summary }}
+      <span class="post-item__summary">{{ . }}</span>
+      {{- end }}
+    </div>
+  </a>
+  {{- end }}
+</div>

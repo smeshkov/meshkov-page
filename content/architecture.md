@@ -1,9 +1,7 @@
 ---
-menus:
-  main:
-    weight: 15
 title: Architecture
 type: portfolio
 category: architecture
-extra_css: "css/home.css"
+weight: 50
+blurb: "Towers and gardens — the built things that hold still long enough to be studied."
 ---

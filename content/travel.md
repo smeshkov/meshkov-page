@@ -1,9 +1,7 @@
 ---
-menus:
-  main:
-    weight: 11
 title: Travel
 type: portfolio
 category: travel
-extra_css: "css/home.css"
+weight: 10
+blurb: "Japan mostly, and the long way round to it — shrines, rivers, cable cars, ferries."
 ---

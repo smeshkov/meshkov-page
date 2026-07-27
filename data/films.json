@@ -1,0 +1,36 @@
+{
+  "channel": "https://www.youtube.com/@snowthirsty",
+  "handle": "@snowthirsty",
+  "films": [
+    {
+      "title": "Two weeks around Fuji with one lens",
+      "note": "What a 35mm forces you to leave out, and why that turned out to be the point.",
+      "url": "https://www.youtube.com/@snowthirsty",
+      "thumb": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV05793_cabinlift_fuji.jpg",
+      "duration": "08:41",
+      "date": "2026-06-01",
+      "featured": true
+    },
+    {
+      "title": "Shooting surf from the water, badly",
+      "url": "https://www.youtube.com/@snowthirsty",
+      "thumb": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV02868_Sam_Surf.jpg",
+      "duration": "12:05",
+      "date": "2026-05-01"
+    },
+    {
+      "title": "An hour on one platform",
+      "url": "https://www.youtube.com/@snowthirsty",
+      "thumb": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV06046_Tokyo_trainstation.jpg",
+      "duration": "06:22",
+      "date": "2026-02-01"
+    },
+    {
+      "title": "Four days walking in Tasmania",
+      "url": "https://www.youtube.com/@snowthirsty",
+      "thumb": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/11040125_Yulia_Cradle.jpg",
+      "duration": "09:14",
+      "date": "2025-11-01"
+    }
+  ]
+}

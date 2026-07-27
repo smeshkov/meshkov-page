@@ -1,9 +1,7 @@
 ---
-menus:
-  main:
-    weight: 12
 title: Street
 type: portfolio
 category: street
-extra_css: "css/home.css"
+weight: 20
+blurb: "Cities after dark and in the middle of the afternoon: signage, wet asphalt, platforms, the people still out."
 ---

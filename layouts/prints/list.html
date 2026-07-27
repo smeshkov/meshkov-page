@@ -1,0 +1,45 @@
+{{ define "main" }}
+{{- $data := site.Data.prints }}
+{{- $prints := $data.prints | default slice }}
+
+<div class="page">
+  <div class="page__head">
+    <div class="page__headtext">
+      {{- with $data.status }}<span class="eyebrow eyebrow--gold">{{ . }}</span>{{ end }}
+      <h1 class="display-l">{{ $data.headline | default .Title }}</h1>
+      {{- with $data.blurb }}<p class="lede">{{ . }}</p>{{ end }}
+    </div>
+    <div class="waitlist">
+      {{- if site.Params.newsletterAction }}
+      <form action="{{ site.Params.newsletterAction }}" method="post">
+        <label class="visually-hidden" for="waitlist-email">Email address</label>
+        <input class="field" id="waitlist-email" type="email" name="email" placeholder="you@email.com" required />
+        <button class="btn btn--solid" type="submit">Join the waitlist</button>
+      </form>
+      {{- else }}
+      <a class="btn btn--solid" href="mailto:{{ site.Params.email }}?subject=Print%20waitlist">Join the waitlist</a>
+      {{- end }}
+    </div>
+  </div>
+
+  {{- if $prints }}
+  <div class="print-grid">
+    {{- range $prints }}
+    <a class="print-card" href="{{ printf "/prints/%s/" .slug | relURL }}">
+      <img src="{{ .src }}" alt="{{ .title }}" loading="lazy" decoding="async" />
+      <span class="print-card__name">{{ .title }}</span>
+      <span class="print-card__price">
+        {{- with .from }}From {{ . }}{{ end }}
+        {{- if and .from .reserved }} &middot; {{ end }}
+        {{- with .reserved }}{{ . }} of 25 reserved{{ end }}
+      </span>
+    </a>
+    {{- end }}
+  </div>
+  {{- else }}
+  <p class="lede">The first edition is still being selected. Ask about any photograph on the site and you will hear first.</p>
+  {{- end }}
+
+  {{ .Content }}
+</div>
+{{ end }}

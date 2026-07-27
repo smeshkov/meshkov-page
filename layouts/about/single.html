@@ -1,0 +1,44 @@
+{{ define "main" }}
+<div class="page">
+  <div class="about">
+    <div class="about__text">
+      <h1 class="display-xl">{{ .Params.headline | default .Title }}</h1>
+
+      {{ .Content }}
+
+      {{- with .Params.kit }}
+      <div class="about__block">
+        <h2>Kit</h2>
+        <span class="about__kit">{{ . }}</span>
+      </div>
+      {{- end }}
+
+      <div class="about__block">
+        <h2>Work with me</h2>
+        {{- with .Params.email }}
+        <a class="about__email" href="mailto:{{ . }}">{{ . }}</a>
+        {{- end }}
+        {{- with .Params.commissions }}
+        <span class="lede">{{ . }}</span>
+        {{- end }}
+      </div>
+    </div>
+
+    <aside class="about__side">
+      {{- with .Params.portrait }}
+      <img class="about__portrait" src="{{ . }}" alt="Portrait of Sergey Meshkov" loading="lazy" decoding="async" />
+      {{- end }}
+      {{- with .Params.portrait_caption }}
+      <span class="about__caption">{{ . }}</span>
+      {{- end }}
+
+      <div class="elsewhere">
+        <h2>Elsewhere</h2>
+        <a href="https://www.instagram.com/thesnowthirsty" rel="me noopener" target="_blank">Instagram — @thesnowthirsty</a>
+        <a href="https://www.youtube.com/@snowthirsty" rel="me noopener" target="_blank">YouTube — @snowthirsty</a>
+        <a href="{{ "/blog/index.xml" | relURL }}">RSS</a>
+      </div>
+    </aside>
+  </div>
+</div>
+{{ end }}

@@ -1,9 +1,29 @@
 {{ define "main" }}
-<div class="container blog-container">
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-10 col-lg-8 blog-content">
-        {{.Content}}
-    </div>
+<article class="post">
+  {{- with .Params.header_image }}
+  <div class="post__hero">
+    <img src="{{ . }}" alt="" fetchpriority="high" decoding="async" />
   </div>
-</div>
+  {{- end }}
+
+  <div class="post__body">
+    <span class="post__meta">
+      {{- with (index .Params.tags 0) }}{{ . }} &middot; {{ end -}}
+      {{ .Date.Format "2 Jan 2006" }} &middot; {{ .ReadingTime }} min
+    </span>
+
+    {{ .Content }}
+
+    <nav class="post__nav" aria-label="More journal entries">
+      {{- with .PrevInSection }}
+      <a href="{{ .RelPermalink }}">&larr; {{ .LinkTitle }}</a>
+      {{- else }}
+      <span></span>
+      {{- end }}
+      {{- with .NextInSection }}
+      <a href="{{ .RelPermalink }}">{{ .LinkTitle }} &rarr;</a>
+      {{- end }}
+    </nav>
+  </div>
+</article>
 {{ end }}

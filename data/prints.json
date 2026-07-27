@@ -1,0 +1,93 @@
+{
+  "status": "Prints — opening late 2026",
+  "headline": "Archival pigment prints, editions of twenty-five",
+  "blurb": "Signed and numbered, on 310gsm cotton rag. Tell me which frame you want and you will hear first — or ask about any photograph on the site that is not listed here.",
+  "spec": "Archival pigment on 310gsm cotton rag, signed and numbered by hand. Edition of 25. Ships rolled, worldwide, in 10–14 days. Unframed.",
+  "sizes": [
+    { "label": "A3 — 297 × 420 mm", "price": "$180" },
+    { "label": "A2 — 420 × 594 mm", "price": "$290", "default": true },
+    { "label": "A1 — 594 × 841 mm", "price": "$460" }
+  ],
+  "prints": [
+    {
+      "slug": "three-rocks",
+      "title": "Three Rocks",
+      "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV04718_three_rocks.jpg",
+      "series": "Nature",
+      "place": "Cape Raoul, Tasmania",
+      "year": "2024",
+      "from": "$180",
+      "reserved": 8
+    },
+    {
+      "slug": "sunrise-jetty",
+      "title": "Sunrise Jetty",
+      "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV05529_sunrise_jetty.jpg",
+      "series": "Nature",
+      "place": "Tasmania",
+      "year": "2024",
+      "from": "$180",
+      "reserved": 3
+    },
+    {
+      "slug": "red-lights",
+      "title": "Red Lights",
+      "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV05746_red_lights.jpg",
+      "series": "Street",
+      "place": "Tokyo",
+      "year": "2025",
+      "from": "$180",
+      "reserved": 11
+    },
+    {
+      "slug": "wineglass-bay",
+      "title": "Wineglass Bay",
+      "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/10440122_stack_Wineglass_Bay.jpg",
+      "series": "Nature",
+      "place": "Freycinet, Tasmania",
+      "year": "2022",
+      "from": "$180",
+      "reserved": 2
+    },
+    {
+      "slug": "hozugawa-early",
+      "title": "Hozugawa, early",
+      "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV05498_kyoto_river_boat.jpg",
+      "series": "Travel",
+      "place": "Kyoto",
+      "year": "2025",
+      "from": "$180",
+      "reserved": 6
+    },
+    {
+      "slug": "birds",
+      "title": "Birds",
+      "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV02570_birds.jpg",
+      "series": "Nature",
+      "place": "Sydney",
+      "year": "2023",
+      "from": "$180",
+      "reserved": 1
+    },
+    {
+      "slug": "skytree",
+      "title": "Skytree",
+      "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV05973_tokyo_skytree.jpg",
+      "series": "Architecture",
+      "place": "Tokyo",
+      "year": "2025",
+      "from": "$180",
+      "reserved": 4
+    },
+    {
+      "slug": "surf-couple",
+      "title": "Surf Couple",
+      "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV01344_surf_couple.jpg",
+      "series": "People",
+      "place": "Sydney",
+      "year": "2023",
+      "from": "$180",
+      "reserved": 5
+    }
+  ]
+}

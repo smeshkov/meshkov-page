@@ -1,0 +1,20 @@
+{{- /* The letter card. Renders a real form only when a handler is configured;
+        otherwise it points at the feed, which does work. */ -}}
+<div class="letter">
+  <span class="eyebrow eyebrow--gold">The letter</span>
+  {{- if site.Params.newsletterAction }}
+  <p class="letter__title">One photograph and one story, once a month</p>
+  <p class="letter__note">No gear reviews, no presets. Unsubscribe whenever.</p>
+  <form action="{{ site.Params.newsletterAction }}" method="post">
+    <label class="visually-hidden" for="letter-email">Email address</label>
+    <input class="field" id="letter-email" type="email" name="email" placeholder="you@email.com" required />
+    <button class="btn btn--solid" type="submit">Subscribe</button>
+  </form>
+  {{- else }}
+  <p class="letter__title">One photograph and one story, once a month</p>
+  <p class="letter__note">No gear reviews, no presets. New writing lands in the feed first.</p>
+  <a class="btn btn--solid" href="{{ "/blog/index.xml" | relURL }}">Subscribe by RSS</a>
+  {{- end }}
+  <span class="letter__fine">Or follow along on
+    <a href="https://www.instagram.com/thesnowthirsty" rel="me noopener" target="_blank">Instagram</a>.</span>
+</div>

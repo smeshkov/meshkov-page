@@ -1,88 +1,99 @@
 {{ define "main" }}
-{{ .Content }}
+{{- /*
+  Featured frames are manual-first: the ordered `featured` list in
+  data/photos.json drives the sequence. When it holds fewer than eight
+  entries the newest frames top it up, so the home page is never thin.
+*/ -}}
+{{- $minFrames := 8 }}
+{{- $data := site.Data.photos }}
 
-<div class="fullscreen-slider" id="home-slider" aria-roledescription="carousel" aria-label="Photography Portfolio">
-  {{ $allPhotos := slice }}
-  {{ range $category, $photos := .Site.Data.photos }}
-    {{ $allPhotos = $allPhotos | append $photos }}
-  {{ end }}
+{{- /* Look up table: src -> photo plus where it sits in its series. */ -}}
+{{- $lookup := dict }}
+{{- $all := slice }}
+{{- range $cat, $photos := $data.series }}
+  {{- range $i, $photo := $photos }}
+    {{- $all = $all | append $photo }}
+    {{- $lookup = merge $lookup (dict $photo.src (dict "photo" $photo "cat" $cat "n" (add $i 1) "total" (len $photos))) }}
+  {{- end }}
+{{- end }}
 
-  {{ range $index, $photo := $allPhotos }}
-    <div class="slide {{ if eq $index 0 }}active{{ end }}" role="group" aria-roledescription="slide" aria-label="{{ add $index 1 }} of {{ len $allPhotos }}">
-      <img
-        src="{{ .src }}"
-        alt="{{ .title }}"
-        crossorigin="anonymous"
-        {{ if eq $index 0 }}fetchpriority="high"{{ else }}loading="lazy"{{ end }}
-      />
+{{- /* Series key -> its page, for the caption and the series link. */ -}}
+{{- $pages := dict }}
+{{- range $p := where site.RegularPages "Type" "portfolio" }}
+  {{- with $p.Params.category }}
+    {{- $pages = merge $pages (dict . $p) }}
+  {{- end }}
+{{- end }}
+
+{{- $featuredSrcs := $data.featured | default slice }}
+{{- $frames := slice }}
+{{- range $featuredSrcs }}
+  {{- with index $lookup . }}
+    {{- $frames = $frames | append . }}
+  {{- end }}
+{{- end }}
+
+{{- if lt (len $frames) $minFrames }}
+  {{- $rest := where $all "src" "not in" $featuredSrcs }}
+  {{- $need := sub $minFrames (len $frames) }}
+  {{- if gt $need (len $rest) }}{{ $need = len $rest }}{{ end }}
+  {{- range last $need $rest }}
+    {{- with index $lookup .src }}
+      {{- $frames = $frames | append . }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+
+<h1 class="visually-hidden">Sergey Meshkov — photographs and films from Sydney, Australia</h1>
+
+<div class="home" data-home>
+  <div class="frames" role="region" aria-label="Featured photographs">
+    {{- range $i, $f := $frames }}
+    {{- $photo := $f.photo }}
+    {{- $page := index $pages $f.cat }}
+    <article class="frame{{ if eq $i 0 }} is-active{{ end }}"{{ if ne $i 0 }} aria-hidden="true"{{ end }}>
+      <div class="frame__stage">
+        <img class="frame__blur" src="{{ $photo.src }}" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+        <img
+          class="frame__img"
+          src="{{ $photo.src }}"
+          alt="{{ $photo.title }}"
+          {{ if eq $i 0 }}fetchpriority="high"{{ else }}loading="lazy"{{ end }}
+          decoding="async"
+        />
+      </div>
+      <div class="frame__meta">
+        <div class="frame__metatext">
+          <span class="frame__series">{{ with $page }}{{ .Title }}{{ else }}{{ $f.cat | humanize }}{{ end }} — {{ printf "%02d" $f.n }} / {{ $f.total }}</span>
+          <h2 class="frame__title">{{ $photo.title }}</h2>
+        </div>
+        <div class="frame__actions">
+          <a class="btn btn--ghost" href="{{ $photo.src }}" target="_blank" rel="noopener">Enlarge</a>
+          {{- with $page }}
+          <a class="btn btn--ghost" href="{{ .RelPermalink }}">See the series</a>
+          {{- end }}
+        </div>
+      </div>
+    </article>
+    {{- end }}
+  </div>
+
+  <div class="strip">
+    <div class="strip__head">
+      <span>Drag or scroll &rarr;</span>
+      <span>Featured</span>
     </div>
-  {{ end }}
-
-  <div class="slider-controls">
-    <button class="slider-btn" id="prev-slide" aria-label="Previous Slide">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-      </svg>
-    </button>
-    <button class="slider-btn" id="next-slide" aria-label="Next Slide">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-      </svg>
-    </button>
+    <div class="strip__track">
+      {{- range $i, $f := $frames }}
+      <button
+        class="strip__item"
+        type="button"
+        {{ if eq $i 0 }}aria-current="true"{{ end }}
+      >
+        <img src="{{ $f.photo.src }}" alt="Show “{{ $f.photo.title }}”" loading="lazy" decoding="async" />
+      </button>
+      {{- end }}
+    </div>
   </div>
 </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const slides = document.querySelectorAll('#home-slider .slide');
-  const prevBtn = document.getElementById('prev-slide');
-  const nextBtn = document.getElementById('next-slide');
-  let currentSlide = 0;
-  let slideInterval;
-
-  if (slides.length === 0) return;
-
-  function showSlide(index) {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (index + slides.length) % slides.length;
-    slides[currentSlide].classList.add('active');
-  }
-
-  function nextSlide() {
-    showSlide(currentSlide + 1);
-  }
-
-  function startSlideShow() {
-    slideInterval = setInterval(nextSlide, 4000);
-  }
-
-  function resetSlideShow() {
-    clearInterval(slideInterval);
-    startSlideShow();
-  }
-
-  prevBtn.addEventListener('click', () => {
-    showSlide(currentSlide - 1);
-    resetSlideShow();
-  });
-  
-  nextBtn.addEventListener('click', () => {
-    showSlide(currentSlide + 1);
-    resetSlideShow();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
-      showSlide(currentSlide - 1);
-      resetSlideShow();
-    }
-    if (e.key === 'ArrowRight') {
-      showSlide(currentSlide + 1);
-      resetSlideShow();
-    }
-  });
-
-  startSlideShow();
-});
-</script>
 {{ end }}

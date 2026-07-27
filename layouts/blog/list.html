@@ -1,29 +1,30 @@
 {{ define "main" }}
-<div class="container blog-container">
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-10 col-lg-8">
-      {{ range .Pages }} 
-      {{ $pageTitle := htmlUnescape .LinkTitle | safeHTML }}
-      <div class="card blog-item mx-auto">
-          <div>
-              <div class="blog-img">
-                  <img
-                      class="img-fluid"
-                      src="{{ .Params.header_image }}"
-                      alt="{{ $pageTitle }}"
-                  />
-              </div>
-          </div>
-          <div>
-              <a href="{{ .Permalink }}" class="text-reset text-decoration-none stretched-link">
-                  <h3 class="blog-post-title">{{ $pageTitle }}</h3>
-              </a>
-              <p class="blog-date">{{ .Date.Format "Jan 2, 2006" | upper }}</p>
-              <p class="blog-summary">{{ .Params.summary }}</p>
-          </div>
-      </div>
-      {{ end }}
+<div class="page">
+  <div class="page__head">
+    <div class="page__headtext">
+      <span class="eyebrow">Journal</span>
+      <h1 class="display-l">{{ .Params.headline | default "Notes on seeing" }}</h1>
     </div>
+  </div>
+
+  <div class="journal">
+    {{ partial "journal-items.html" .Pages.ByDate.Reverse }}
+
+    <aside class="journal__side">
+      {{ partial "letter.html" . }}
+      {{- with site.GetPage "/tags" }}
+      {{- with .Pages }}
+      <div class="topics">
+        <h2 class="topics__head">Topics</h2>
+        <div class="topics__list">
+          {{- range . }}
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          {{- end }}
+        </div>
+      </div>
+      {{- end }}
+      {{- end }}
+    </aside>
   </div>
 </div>
 {{ end }}

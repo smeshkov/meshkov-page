@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="page">
+  <div class="page__head">
+    <div class="page__headtext">
+      <span class="eyebrow">Journal</span>
+      <h1 class="display-l">Topics</h1>
+    </div>
+  </div>
+  <div class="topics__list">
+    {{- range .Pages }}
+    <a href="{{ .RelPermalink }}">{{ .Title }} &middot; {{ len .Pages }}</a>
+    {{- end }}
+  </div>
+</div>
+{{ end }}

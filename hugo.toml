@@ -3,3 +3,16 @@ languageCode = 'en-us'
 title = 'Sergey Meshkov'
 uglyURLs = false
 enableRobotsTXT = true
+
+[params]
+  description = 'Photographs and films by Sergey Meshkov — Sydney, Australia.'
+  email = 'hello@meshkov.page'
+  # Set this to a form handler URL to turn the letter blocks into a real
+  # signup form. Left empty, they point at the RSS feed instead.
+  newsletterAction = ''
+
+[taxonomies]
+  tag = 'tags'
+
+[markup.goldmark.renderer]
+  unsafe = true

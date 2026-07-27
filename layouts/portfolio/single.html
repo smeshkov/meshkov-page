@@ -1,85 +1,46 @@
 {{ define "main" }}
-{{ $cat := .Params.category }}
-{{ $photos := index .Site.Data.photos $cat }}
+{{- $photos := index site.Data.photos.series .Params.category }}
+{{- $series := (where site.RegularPages "Type" "portfolio").ByWeight }}
+{{- $n := 0 }}
+{{- range $i, $s := $series }}
+  {{- if eq $s.RelPermalink $.RelPermalink }}{{ $n = add $i 1 }}{{ end }}
+{{- end }}
 
-<div class="fullscreen-slider" id="category-slider" aria-roledescription="carousel" aria-label="{{ .Title }} Portfolio">
-  {{ range $index, $photo := $photos }}
-    <div class="slide {{ if eq $index 0 }}active{{ end }}" role="group" aria-roledescription="slide" aria-label="{{ add $index 1 }} of {{ len $photos }}">
-      <img
-        src="{{ .src }}"
-        alt="{{ .title }}"
-        crossorigin="anonymous"
-        style="object-fit: contain;"
-        {{ if eq $index 0 }}fetchpriority="high"{{ else }}loading="lazy"{{ end }}
-      />
+<div class="page series-view" data-series-view data-view="grid">
+  <div class="page__head">
+    <div class="page__headtext">
+      <span class="eyebrow">Series {{ printf "%02d" $n }} &middot; {{ len $photos }} frames</span>
+      <h1 class="display-l">{{ .Title }}</h1>
+      {{- with .Params.blurb }}<p class="lede">{{ . }}</p>{{ end }}
     </div>
-  {{ end }}
-
-  <div class="slider-controls">
-    <button class="slider-btn" id="cat-prev-slide" aria-label="Previous Slide">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-      </svg>
-    </button>
-    <button class="slider-btn" id="cat-next-slide" aria-label="Next Slide">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-      </svg>
-    </button>
+    <div class="viewtoggle">
+      <button class="btn btn--on" type="button" data-view-set="grid" aria-pressed="true">Grid</button>
+      <button class="btn" type="button" data-view-set="full" aria-pressed="false">Full frame</button>
+    </div>
   </div>
+
+  <div class="mosaic">
+    {{- range $i, $photo := $photos }}
+    <a href="{{ $photo.src }}" target="_blank" rel="noopener">
+      <img
+        src="{{ $photo.src }}"
+        alt="{{ $photo.title }}"
+        decoding="async"
+        {{ if ge $i 4 }}loading="lazy"{{ end }}
+      />
+    </a>
+    {{- end }}
+  </div>
+
+  <div class="fullview">
+    {{- range $i, $photo := $photos }}
+    <figure>
+      <img src="{{ $photo.src }}" alt="{{ $photo.title }}" loading="lazy" decoding="async" />
+      <figcaption>{{ printf "%02d" (add $i 1) }} &middot; {{ $photo.title }}</figcaption>
+    </figure>
+    {{- end }}
+  </div>
+
+  {{- with .Content }}<div class="lede">{{ . }}</div>{{ end }}
 </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const slides = document.querySelectorAll('#category-slider .slide');
-  const prevBtn = document.getElementById('cat-prev-slide');
-  const nextBtn = document.getElementById('cat-next-slide');
-  let currentSlide = 0;
-  let slideInterval;
-
-  if (slides.length === 0) return;
-
-  function showSlide(index) {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (index + slides.length) % slides.length;
-    slides[currentSlide].classList.add('active');
-  }
-
-  function nextSlide() {
-    showSlide(currentSlide + 1);
-  }
-
-  function startSlideShow() {
-    slideInterval = setInterval(nextSlide, 4000);
-  }
-
-  function resetSlideShow() {
-    clearInterval(slideInterval);
-    startSlideShow();
-  }
-
-  prevBtn.addEventListener('click', () => {
-    showSlide(currentSlide - 1);
-    resetSlideShow();
-  });
-  
-  nextBtn.addEventListener('click', () => {
-    showSlide(currentSlide + 1);
-    resetSlideShow();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
-      showSlide(currentSlide - 1);
-      resetSlideShow();
-    }
-    if (e.key === 'ArrowRight') {
-      showSlide(currentSlide + 1);
-      resetSlideShow();
-    }
-  });
-
-  startSlideShow();
-});
-</script>
 {{ end }}

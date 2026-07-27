@@ -1,0 +1,75 @@
+{{- /*
+  The rail: brand, primary nav, the series list (on Work and on a series page),
+  an optional page note, the letter and the elsewhere links.
+  Below 1024px it is hidden behind the top bar and slides down as a drawer.
+*/ -}}
+{{- $page := . }}
+{{- $series := (where site.RegularPages "Type" "portfolio").ByWeight }}
+{{- $showSeries := in (slice "portfolio" "work") $page.Type }}
+{{- $work := site.GetPage "/work" }}
+
+<nav id="rail" class="rail" aria-label="Primary">
+  <div class="rail__top">
+    <div class="rail__brand">
+      <a class="rail__name" href="{{ "/" | relURL }}">Sergey<br />Meshkov</a>
+      <span class="rail__tagline">Photographs &amp; films<br />Sydney, Australia</span>
+    </div>
+
+    {{- with site.Menus.main }}
+    <div class="rail__nav">
+      {{- range . }}
+      <a href="{{ .URL }}"
+        {{- if or ($page.IsMenuCurrent "main" .) ($page.HasMenuCurrent "main" .) }} aria-current="page"{{ end -}}
+      >{{ .Name }}</a>
+      {{- end }}
+    </div>
+    {{- end }}
+
+    {{- if and $showSeries $series }}
+    <div class="rail__block rail__series">
+      <div class="rail__blockhead">
+        <span>Series</span>
+        <span>{{ len $series }}</span>
+      </div>
+      {{- range $i, $s := $series }}
+      <a href="{{ $s.RelPermalink }}"
+        {{- if eq $s.RelPermalink $page.RelPermalink }} aria-current="page"{{ end -}}
+      >{{ printf "%02d" (add $i 1) }} {{ $s.Title }}</a>
+      {{- end }}
+      <div class="rail__rule"></div>
+      {{- with $work }}
+      <a class="rail__all" href="{{ .RelPermalink }}">All {{ len $series }} series &rarr;</a>
+      {{- end }}
+    </div>
+    {{- end }}
+
+    {{- with $page.Params.rail_note }}
+    <div class="rail__block">
+      <div class="rail__blockhead"><span>{{ $page.Params.rail_note_title | default "Featured" }}</span></div>
+      <span class="rail__note">{{ . }}</span>
+    </div>
+    {{- end }}
+  </div>
+
+  <div class="rail__bottom">
+    <div class="rail__letter">
+      <span>The letter</span>
+      {{- if site.Params.newsletterAction }}
+      <p>One photograph, one story, monthly.</p>
+      <form class="rail__letterform" action="{{ site.Params.newsletterAction }}" method="post">
+        <label class="visually-hidden" for="rail-email">Email address</label>
+        <input class="field" id="rail-email" type="email" name="email" placeholder="you@email.com" required />
+        <button class="btn btn--solid" type="submit">Subscribe</button>
+      </form>
+      {{- else }}
+      <p>One photograph, one story. Follow along by feed.</p>
+      <a class="btn btn--solid" href="{{ "/blog/index.xml" | relURL }}">Subscribe</a>
+      {{- end }}
+    </div>
+    <div class="rail__social">
+      <a href="https://www.instagram.com/thesnowthirsty" rel="me noopener" target="_blank">IG</a>
+      <a href="https://www.youtube.com/@snowthirsty" rel="me noopener" target="_blank">YT</a>
+      <a href="{{ "/blog/index.xml" | relURL }}">RSS</a>
+    </div>
+  </div>
+</nav>

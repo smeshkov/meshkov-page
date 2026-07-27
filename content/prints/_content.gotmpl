@@ -1,0 +1,10 @@
+{{/* One page per entry in data/prints.json. Drafts until the shop is real. */}}
+{{ range site.Data.prints.prints }}
+  {{ $.AddPage (dict
+      "path" .slug
+      "title" .title
+      "kind" "page"
+      "draft" true
+      "params" (dict "print" . "summary" (printf "%s — archival pigment print, edition of 25." .title))
+  ) }}
+{{ end }}

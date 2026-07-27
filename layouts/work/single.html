@@ -1,0 +1,33 @@
+{{ define "main" }}
+{{- $series := (where site.RegularPages "Type" "portfolio").ByWeight }}
+{{- $total := 0 }}
+{{- range $series }}
+  {{- $total = add $total (len (index site.Data.photos.series .Params.category)) }}
+{{- end }}
+
+<div class="page">
+  <div class="page__head">
+    <div class="page__headtext">
+      <span class="eyebrow">Work</span>
+      <h1 class="display-l">{{ len $series }} series, {{ $total }} photographs</h1>
+      {{- with .Content }}<div class="lede">{{ . }}</div>{{ end }}
+    </div>
+  </div>
+
+  <div class="series-grid">
+    {{- range $series }}
+    {{- $photos := index site.Data.photos.series .Params.category }}
+    {{- $cover := .Params.cover | default (index $photos 0).src }}
+    <a class="series-card" href="{{ .RelPermalink }}">
+      <img src="{{ $cover }}" alt="{{ .Title }}" loading="lazy" decoding="async" />
+      <div class="series-card__row">
+        <span class="series-card__name">{{ .Title }}</span>
+        <span class="series-card__count">{{ len $photos }}</span>
+      </div>
+    </a>
+    {{- end }}
+  </div>
+
+  <p class="page__tally">Showing all {{ len $series }} series</p>
+</div>
+{{ end }}

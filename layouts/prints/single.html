@@ -1,0 +1,44 @@
+{{ define "main" }}
+{{- $data := site.Data.prints }}
+{{- $print := .Params.print }}
+{{- $sizes := $print.sizes | default $data.sizes | default slice }}
+
+<div class="print-detail">
+  <div class="print-detail__stage">
+    <img src="{{ $print.src }}" alt="{{ $print.title }}" fetchpriority="high" decoding="async" />
+  </div>
+
+  <div class="print-detail__panel">
+    <div class="page__headtext">
+      <span class="eyebrow eyebrow--gold">
+        {{- with $print.series }}{{ . }}{{ end }}
+      </span>
+      <h1 class="display-l">{{ $print.title }}</h1>
+      <span class="lede">
+        {{- with $print.place }}{{ . }}{{ end }}
+        {{- if and $print.place $print.year }} &middot; {{ end }}
+        {{- with $print.year }}{{ . }}{{ end }}
+      </span>
+    </div>
+
+    {{- if $sizes }}
+    <div class="sizes">
+      <span class="eyebrow">Size</span>
+      {{- range $sizes }}
+      <div class="sizes__row{{ if .default }} is-on{{ end }}">
+        <span>{{ .label }}</span>
+        <span>{{ .price }}</span>
+      </div>
+      {{- end }}
+    </div>
+    {{- end }}
+
+    {{- with $data.spec }}<p class="letter__note">{{ . }}</p>{{ end }}
+
+    <div class="print-detail__foot">
+      <a class="btn btn--solid" href="mailto:{{ site.Params.email }}?subject={{ printf "Print enquiry — %s" $print.title | urlquery }}">Ask about this frame</a>
+      {{- with $print.reserved }}<span>{{ . }} of 25 already spoken for</span>{{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}
