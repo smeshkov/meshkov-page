@@ -1,7 +1,7 @@
 ---
 title: Films
 type: films
-draft: true
+draft: false
 headline: "Moving pictures, mostly quiet"
 menus:
   main:
