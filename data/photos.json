@@ -16,12 +16,24 @@
   "series": {
     "travel": [
       {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV03673_truck.jpg",
+        "title": "Truck"
+      },
+      {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV03742_mountain_sunrise.jpg",
+        "title": "Sunrise"
+      },
+      {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV04912_Yulia.jpg",
         "title": "Yulia"
       },
       {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV05387_kyoto_shrine_lady.jpg",
         "title": "Kyoto Shrine"
+      },
+      {
+        "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV03756_volcanos.jpg",
+        "title": "Volcanos"
       },
       {
         "src": "https://storage.googleapis.com/zoomio-public/meshkov-page/home-gallery/ARV05498_kyoto_river_boat.jpg",
